@@ -43,6 +43,7 @@ This is a LaTeX template that closely matches the official Cape Peninsula Univer
 - `compile.bat` - Windows build script for LaTeX and Biber
 - `.github/workflows/` - GitHub Actions workflows for PDF builds and release artifacts
 - `CHANGELOG.md` - Version history
+- `CONTRIBUTING.md` - Contribution workflow and pull request instructions
 - `media/` - Directory containing CPUT logo and example images
 - `AUTHORS.md` - Template authors
 - `LICENSE` - Creative Commons license
@@ -204,6 +205,10 @@ To use Roman numerals for front matter (Declaration, Abstract, etc.), wrap the f
 ## Support
 
 This template is provided as-is. For CPUT-specific requirements, consult your supervisor and the official CPUT thesis guidelines.
+
+## Contributing
+
+Contributions should be made through pull requests to https://github.com/boniface/cput-thesis-template. Fork the repository, clone it with `git clone`, create a feature branch, make the change, compile the template, push the branch, and open a PR. See `CONTRIBUTING.md` for the full command-line workflow.
 
 ## License
 
