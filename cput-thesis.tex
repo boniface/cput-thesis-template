@@ -1,0 +1,105 @@
+% !TeX program = xelatex
+% !BIB program = biber
+% CPUT Thesis Template
+% LaTeX version of CPUT Thesis Template Word document
+% Compile with PDFLaTeX, XeLaTeX, or LuaLaTeX
+
+\documentclass{cputthesis}
+
+\addbibresource{references.bib}
+
+% Thesis metadata - fill these in
+\thesistitle{TITLE OF THESIS/DISSERTATION}
+\authorfull{FULL FIRST NAMES \& SURNAME}
+\degreetype{Master of Technology/Doctor of Technology: (choose one)}
+\discipline{Discipline (e.g. Chemical Engineering, Public Relations Management)}
+\faculty{in the Faculty of (name of Faculty)}
+\supervisor{Supervisor: Type the name of your supervisor here, e.g. Prof BA Brain}
+\cosupervisor{Co-supervisor: Add if necessary -- otherwise delete}
+\campus{Bellville/Cape Town/Mowbray/Wellington (choose campus)}
+\submissiondate{Date submitted (e.g. September 2007)}
+
+\begin{document}
+
+% Title page
+\maketitle
+
+% Declaration
+\begin{declaration}
+I, type your full first names and surname here, declare that the contents of this dissertation/thesis represent my own unaided work, and that the dissertation/thesis has not previously been submitted for academic examination towards any qualification. Furthermore, it represents my own opinions and not necessarily those of the Cape Peninsula University of Technology.
+\end{declaration}
+
+% Abstract
+\begin{cputabstract}
+Type your Abstract here in 1½-line spacing. Length: 1-2 pages maximum, preferably 1 page.
+\end{cputabstract}
+
+% Acknowledgements
+\begin{acknowledgements}
+\textbf{I wish to thank:}
+
+\begin{itemize}
+\item Type name of person here, with brief explanation if necessary.
+\item Type name of person here, with brief explanation if necessary.
+\item Type name of person here, with brief explanation if necessary.
+\item Type name of person here, with brief explanation if necessary. Use as many bullets as you wish (but within reason).
+\end{itemize}
+
+\textbf{If you have received funding from the NRF, include the following:}
+
+The financial assistance of the National Research Foundation towards this research is acknowledged. Opinions expressed in this thesis and the conclusions arrived at, are those of the author, and are not necessarily to be attributed to the National Research Foundation.
+\end{acknowledgements}
+
+% Dedication (optional)
+\begin{dedication}
+This is optional, and may be omitted.
+
+\vspace{1cm}
+
+For (whomever)
+\end{dedication}
+
+% Manual template table of contents and lists, matching the Word template.
+% Replace with \tableofcontents, \listoffigures, and \listoftables if your
+% department asks for generated lists.
+\cputmanualcontents
+
+% Glossary (if needed)
+\begin{cputglossary}
+\textbf{List any terms, acronyms or abbreviations (with the appropriate caption) used here. Use single-line spacing, with a line between each item.}
+
+\noindent\begin{tabularx}{0.96\textwidth}{|Y|Y|}
+\hline
+\textbf{Terms/Acronyms/Abbreviations} & \textbf{Definition/Explanation} \\
+\hline
+ & \\[1.2\baselineskip]
+ & \\[1.2\baselineskip]
+ & \\[1.2\baselineskip]
+ & \\[1.2\baselineskip]
+ & \\[1.2\baselineskip]
+\hline
+\end{tabularx}
+\end{cputglossary}
+
+\mainmatter
+
+% Chapters
+% Each chapter can be in a separate file and included with \include{chapter1}
+% or written directly here
+
+\include{chapter1}
+\include{chapter2}
+\include{chapter3}
+% Add more chapters as needed
+
+% Bibliography/References
+\nocite{*}
+\printcputbibliography
+
+% Appendices
+\appendix
+\include{appendixA}
+\include{appendixB}
+% Add more appendices as needed
+
+\end{document}

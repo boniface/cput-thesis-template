@@ -1,0 +1,123 @@
+name: Publish release artifact
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Release version without the leading v
+        required: true
+        default: 1.0.0
+      engine:
+        description: LaTeX engine used to build the release PDF
+        required: true
+        type: choice
+        default: xelatex
+        options:
+          - xelatex
+          - pdflatex
+          - lualatex
+      publish_release:
+        description: Also create or update a GitHub Release
+        required: true
+        type: boolean
+        default: true
+      prerelease:
+        description: Mark the GitHub Release as a prerelease
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build and publish v${{ inputs.version }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Compile with XeLaTeX
+        if: ${{ inputs.engine == 'xelatex' }}
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: cput-thesis.tex
+          texlive_version: 2026
+          os: debian
+          latexmk_use_xelatex: true
+
+      - name: Compile with PDFLaTeX
+        if: ${{ inputs.engine == 'pdflatex' }}
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: cput-thesis.tex
+          texlive_version: 2026
+          os: debian
+
+      - name: Compile with LuaLaTeX
+        if: ${{ inputs.engine == 'lualatex' }}
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: cput-thesis.tex
+          texlive_version: 2026
+          os: debian
+          latexmk_use_lualatex: true
+
+      - name: Prepare release files
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          package_name="cput-thesis-template-${VERSION}"
+          package_dir="dist/${package_name}"
+
+          mkdir -p "${package_dir}/media"
+
+          cp README.md CHANGELOG.md AUTHORS.md LICENSE .gitignore "${package_dir}/"
+          cp compile.sh compile.bat "${package_dir}/"
+          cp cput-thesis.tex cputthesis.cls references.bib "${package_dir}/"
+          cp chapter1.tex chapter2.tex chapter3.tex appendixA.tex appendixB.tex "${package_dir}/"
+          cp media/Fig1.png media/image1.png "${package_dir}/media/"
+          cp cput-thesis.pdf "${package_dir}/cput-thesis-template-preview.pdf"
+
+          cp cput-thesis.pdf "dist/${package_name}-preview.pdf"
+
+          tar -czf "dist/${package_name}.tar.gz" -C dist "${package_name}"
+          (
+            cd dist
+            python3 -m zipfile -c "${package_name}.zip" "${package_name}"
+          )
+
+          awk -v version="${VERSION}" '
+            $0 ~ "^## \\[" version "\\]" { in_section = 1; print; next }
+            in_section && /^## \[/ { exit }
+            in_section { print }
+          ' CHANGELOG.md > dist/release-notes.md
+          test -s dist/release-notes.md || cp CHANGELOG.md dist/release-notes.md
+
+      - name: Upload workflow artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: cput-thesis-template-${{ inputs.version }}
+          path: |
+            dist/cput-thesis-template-${{ inputs.version }}.zip
+            dist/cput-thesis-template-${{ inputs.version }}.tar.gz
+            dist/cput-thesis-template-${{ inputs.version }}-preview.pdf
+            dist/release-notes.md
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Create or update GitHub Release
+        if: ${{ inputs.publish_release }}
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: v${{ inputs.version }}
+          name: CPUT Thesis Template v${{ inputs.version }}
+          body_path: dist/release-notes.md
+          files: |
+            dist/cput-thesis-template-${{ inputs.version }}.zip
+            dist/cput-thesis-template-${{ inputs.version }}.tar.gz
+            dist/cput-thesis-template-${{ inputs.version }}-preview.pdf
+          prerelease: ${{ inputs.prerelease }}
+          fail_on_unmatched_files: true
