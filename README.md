@@ -5,7 +5,7 @@ This is a LaTeX template that closely matches the official Cape Peninsula Univer
 ## Authors
 
 - Boniface Kabaso
-- Waldon Henricks
+- Waldon Hendricks
 
 ## Features
 
