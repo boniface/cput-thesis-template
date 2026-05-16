@@ -77,7 +77,6 @@ date=year
 
 % ---- Suppress issue/URL dates ----
 \renewbibmacro*{issue+date}{}
-\renewbibmacro*{url+urldate}{}
 
 % ---- In-text citation: (Author, Year:Page) ----
 \DeclareFieldFormat{postnote}{#1}
@@ -328,7 +327,6 @@ date=year
 \AtBeginEnvironment{figure}{\singlespacing}
 
 \DeclareNameAlias{sortname}{family-given}
-\setlength{\bibitemsep}{\baselineskip}
 
 \defbibheading{cputbibliography}{%
 	\chapter*{BIBLIOGRAPHY/REFERENCES}%
