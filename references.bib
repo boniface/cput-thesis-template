@@ -1,145 +1,469 @@
-@book{brunner-1972,
-  author    = {Brunner, H.},
-  year      = {1972},
-  title     = {Hieroglyphic writing: the Egyptian legacy},
-  edition   = {3},
-  location  = {New York},
-  publisher = {Simon \& Schuster}
-}
+% ============================================================================
+% BIBTEX ENTRY TEMPLATES FOR CPUT HARVARD REFERENCING (v2.8)
+% ============================================================================
+% % CPUT Thesis LaTeX class
+% Version 2.8 – fully compliant with CPUT Harvard Referencing Style (October 2025)
+% Authors: Boniface Kabaso and Waldon Henricks
+% License: CC BY 4.0
+% This file contains correctly formatted BibTeX entry templates that comply
+% with the CPUT Official Harvard Referencing Style Manual (October 2025).
+%
+% Usage:
+%   1. Copy and paste the relevant template below
+%   2. Replace placeholder values with your source information
+%   3. Use the key (e.g., smith-2020) in \cite, \textcite, \parencite commands
+%   4. Compile with: xelatex → biber → xelatex
+%
+% Key Naming Convention: lastname-year[a|b|c]
+% Examples: smith-2020, ellis-peters-2000, henderson-etal-1987-a
+%
+% ============================================================================
 
-@online{cput-ip,
-  author  = {{Cape Peninsula University of Technology}},
-  title   = {Intellectual property},
-  url     = {http://www.cput.ac.za/polic/ip.html},
-  urldate = {2005-09-15},
-  note    = {n.d.}
-}
+% ============================================================================
+% BOOKS
+% ============================================================================
 
-@book{chase-1979,
-  author    = {Chase, J.},
-  year      = {1979},
-  title     = {Advertising in the modern world: an international survey},
-  location  = {Englewood Cliffs, NJ},
-  publisher = {Prentice-Hall}
-}
-
+% EXAMPLE : Book (Two Authors)
 @book{ellis-peters-2000,
-  author    = {Ellis, R. and Peters, J. P.},
-  year      = {2000},
-  title     = {Writing about literature},
-  location  = {London},
-  publisher = {Macmillan}
+	author    = {Ellis, R. and Peters, J. P.},
+	year      = {2000},
+	title     = {Writing about literature},
+	location  = {London},
+	publisher = {Macmillan}
+}
+% In-text: Ellis and Peters (2000)
+% Brackets: (Ellis & Peters, 2000)  ← Note: & in brackets, "and" in text
+
+
+% TEMPLATE : Book (Three or More Authors)
+% Output: Smith, J., Brown, A. and Jones, M. 2020. Title. Location: Publisher.
+@book{smith-brown-jones-2020,
+	author    = {Smith, John and Brown, Alice and Jones, Michael},
+	year      = {2020},
+	title     = {Title of book},
+	location  = {Cape Town},
+	publisher = {Publisher Name}
 }
 
-@book{gardner-smith-1984,
-  editor    = {Gardner, B. P. and Smith, G.},
-  year      = {1984},
-  title     = {Child psychology: an introductory guide for parents and teachers},
-  location  = {Harmondsworth},
-  publisher = {Penguin}
-}
-
+% EXAMPLE : Book (Multiple Authors)
 @book{henderson-etal-1987,
-  author    = {Henderson, R. S. and Smith, P. G. and Rossiter, I. and King, P. Q.},
-  year      = {1987},
-  title     = {The tenets of moral philosophy},
-  location  = {New York},
-  publisher = {Van Nostrand}
+	author    = {Henderson, R. S. and Smith, P. G. and Rossiter, I. and King, P. Q.},
+	year      = {1987},
+	title     = {The tenets of moral philosophy},
+	location  = {New York},
+	publisher = {Van Nostrand}
+}
+% In-text: Henderson et al. (1987)
+% Brackets: (Henderson et al., 1987)
+% Note: Class automatically uses "et al." for 3+ authors in citations
+
+% EXAMPLE : Book with Editors
+@book{nel-werner-2017,
+	editor    = {Nel, P. S. and Werner, A.},
+	year      = {2017},
+	title     = {Human resource management},
+	edition   = {10},
+	location  = {Cape Town},
+	publisher = {Oxford University Press Southern Africa}
+}
+% In-text: Nel and Werner (2017)
+% Brackets: (Nel & Werner, 2017)
+
+% EXAMPLE 5: Edition
+@book{welman-etal-2005,
+	author    = {Welman, C. and Kruger, F. and Mitchell, B.},
+	year      = {2005},
+	title     = {Research methodology},
+	edition   = {3},
+	location  = {Cape Town},
+	publisher = {Oxford University Press Southern Africa}
+}
+% In-text: Welman et al. (2005)
+
+
+% TEMPLATE : E-book
+% Output: Smith, J. 2020. Title. Location: Publisher. 
+%         https://ebookcentral.proquest.com/... [15 May 2026].
+@book{smith-2020-ebook,
+	author    = {Smith, John},
+	year      = {2020},
+	title     = {Title of book},
+	location  = {Oakville, ON},
+	publisher = {Society Publishing},
+	url       = {https://search.ebscohost.com/login.aspx?direct=true&scope=site&db=nlebk},
+	urldate   = {2020-05-15}
 }
 
-@article{pringle-1982a,
-  author       = {Pringle, G. S.},
-  year         = {1982},
-  title        = {Aspects of style in the novels of J. M. Coetzee},
-  journaltitle = {College English},
-  volume       = {35},
-  number       = {6},
-  pages        = {34--41}
+% ============================================================================
+% BOOK CHAPTERS (Edited Collections)
+% ============================================================================
+
+% TEMPLATE : Chapter in Edited Book
+% Output: Smith, J. 2020. Chapter title. In Brown, A. (ed.), Book title. 
+%         Location: Publisher, 10-25.
+@incollection{smith-2020-chapter,
+	author    = {Smith, John},
+	year      = {2020},
+	title     = {Chapter title},
+	booktitle = {Book title},
+	editor    = {Brown, Alice},
+	location  = {Cape Town},
+	publisher = {Publisher},
+	pages     = {10-25}
 }
 
-@thesis{pringle-1982b,
-  author      = {Pringle, G. S.},
-  year        = {1982},
-  title       = {The novels of J. M. Coetzee},
-  type        = {PhD thesis},
-  institution = {Rhodes University},
-  location    = {Grahamstown}
+% EXAMPLE : Book Chapter
+@incollection{oliver-2006,
+	author    = {Oliver, P.},
+	year      = {2006},
+	title     = {Purposive sampling},
+	booktitle = {The SAGE dictionary of social research methods},
+	editor    = {Jupp, V.},
+	location  = {London},
+	publisher = {Sage},
+	pages     = {245-246}
+}
+% In-text: Oliver (2006)
+% Brackets: (Oliver, 2006:245)
+
+
+% ============================================================================
+% JOURNAL ARTICLES
+% ============================================================================
+
+% TEMPLATE : Journal Article (Basic)
+% Output: Smith, J. 2020. Article title. Journal Name, 15(2):45-60.
+@article{smith-2020-article,
+	author  = {Smith, John},
+	year    = {2020},
+	title   = {Article title},
+	journal = {Journal Name},
+	volume  = {15},
+	number  = {2},
+	pages   = {45-60}
 }
 
-@incollection{puttnam-1981,
-  author    = {Puttnam, R. A.},
-  year      = {1981},
-  title     = {The place of values in a world of facts},
-  editor    = {Duff, A. and Smithson, W. O.},
-  booktitle = {The nature of the physical universe},
-  location  = {Oxford},
-  publisher = {Oxford University Press},
-  pages     = {45--54}
+% EXAMPLE : Journal Article
+@article{waghid-2018,
+	author  = {Waghid, F.},
+	year    = {2018},
+	title   = {Action research and educational technology: cultivating disruptive learning},
+	journal = {South African Journal of Higher Education},
+	volume  = {32},
+	number  = {4},
+	pages   = {1-11}
+}
+% In-text: Waghid (2018)
+% Brackets: (Waghid, 2018:10)
+
+
+% TEMPLATE : Journal Article (Multiple Authors)
+% Output: Smith, J., Brown, A. and Jones, M. 2020. Article. Journal, 15(2):45-60.
+@article{smith-brown-jones-2020-article,
+	author  = {Smith, John and Brown, Alice and Jones, Michael},
+	year    = {2020},
+	title   = {Article title},
+	journal = {Journal Name},
+	volume  = {15},
+	number  = {2},
+	pages   = {45-60}
 }
 
-@misc{shuttleworth-2004,
-  author = {Shuttleworth, M.},
-  year   = {2004},
-  title  = {Interview with the researcher on 4 August 2004},
-  note   = {Interview}
+% EXAMPLE : Multiple Authors
+@article{kioko-etal-2003,
+	author  = {Kioko, J. I. and Berjak, P. and Pammenter, N. W.},
+	year    = {2003},
+	title   = {Responses to dehydration and conservation of non-orthodox seeds},
+	journal = {South African Journal of Botany},
+	volume  = {69},
+	number  = {4},
+	pages   = {532-539}
+}
+% In-text: Kioko et al. (2003)
+% Brackets: (Kioko et al., 2003:534)
+
+
+% TEMPLATE : Journal Article (with DOI)
+% Output: Smith, J. 2020. Article. Journal, 15(2):45-60. 
+%         http://dx.doi.org/10.xxxx/xxxxx
+@article{smith-2020-doi,
+	author  = {Smith, John},
+	year    = {2020},
+	title   = {Article title},
+	journal = {Journal Name},
+	volume  = {15},
+	number  = {2},
+	pages   = {45-60},
+	doi     = {10.17159/2078516x/2016/v28i1a479}
 }
 
-@misc{south-africa-1982,
-  author   = {{South Africa}},
-  year     = {1982},
-  title    = {Atomic Energy Act, No. 92 of 1982},
-  location = {Pretoria},
-  note     = {Government Printer}
+% EXAMPLE  With DOI
+@article{dove-2016,
+	author  = {Dove, M. A. and Draper, C. E. and Taliep, M. S. and Gray, J.},
+	year    = {2016},
+	title   = {Transformation in cricket: the black African experience},
+	journal = {South African Journal of Sports Medicine},
+	volume  = {28},
+	number  = {1},
+	pages   = {17-22},
+	doi     = {10.17159/2078516x/2016/v28i1a479}
+}
+% Output: No access date needed with DOI
+
+
+% TEMPLATE : Journal Article (with URL but no DOI)
+% Output: Smith, J. 2020. Article. Journal, 15(2):45-60.
+%         https://hdl.handle.net/... [15 May 2026].
+@article{smith-2020-url,
+	author  = {Smith, John},
+	year    = {2020},
+	title   = {Article title},
+	journal = {Journal Name},
+	volume  = {15},
+	number  = {2},
+	pages   = {45-60},
+	url     = {https://hdl.handle.net/10520/EJC-xxxxx},
+	urldate = {2020-05-15}
 }
 
-@report{doe-1995,
-  author      = {{South Africa. Department of Education}},
-  year        = {1995},
-  title       = {A qualification structure for universities in South Africa: Report 116},
-  url         = {http://www.education.gov},
-  urldate     = {2007-10-25},
-  institution = {Department of Education}
+% EXAMPLE 11: With URL
+@article{hibbert-dippenaar-2017,
+	author  = {Hibbert, L. and Dippenaar, H.},
+	year    = {2017},
+	title   = {Communities of practice in curriculum design},
+	journal = {Per Linguam: A Journal of Language Learning},
+	volume  = {33},
+	number  = {2},
+	pages   = {63-75},
+	url     = {https://hdl.handle.net/10520/EJC-c7f9bb3bc},
+	urldate = {2017-08-09}
 }
 
-@book{home-affairs-1980,
-  author    = {{South Africa. Department of Home Affairs}},
-  year      = {1980},
-  title     = {Guidelines for chairmen of publications committees},
-  location  = {Pretoria},
-  publisher = {Government Printer}
+
+% TEMPLATE : Journal Article (no page numbers, with article number)
+% Output: Smith, J. 2020. Article. Journal, 15(2), Article 5470.
+@article{smith-2020-article-num,
+	author  = {Smith, John},
+	year    = {2020},
+	title   = {Article title},
+	journal = {Journal Name},
+	volume  = {15},
+	number  = {2},
+	eid     = {5470}
 }
 
-@article{stewart-1988,
-  author       = {Stewart, M. T.},
-  year         = {1988},
-  title        = {Should privatisation prosper? SAA in the year 1990},
-  journaltitle = {Cape Argus},
-  pages        = {3},
-  date         = {1988-05-17}
+% EXAMPLE : Article Number Format
+@article{delacalle-rodriguez-2021,
+	author  = {De-La-Calle-Durán, M. C. and Rodríguez-Sánchez, J.},
+	year    = {2021},
+	title   = {Employee engagement and wellbeing in times of Covid-19},
+	journal = {International Journal of Environmental Research and Public Health},
+	volume  = {18},
+	number  = {10},
+	eid     = {5470},
+	doi     = {10.3390/ijerph18105470}
 }
 
-@inproceedings{truter-1995,
-  author    = {Truter, M.},
-  year      = {1995},
-  title     = {The role of the court interpreter in the new South Africa},
-  booktitle = {Tower of Babel or Lingua Franca? Proceedings of the 1994 Conference of the South African Institute of Translators, Bloemfontein, 18--23 June 1994},
-  location  = {Johannesburg},
-  publisher = {The Institute},
-  pages     = {56--67}
+
+% ============================================================================
+% THESES AND DISSERTATIONS
+% ============================================================================
+
+% TEMPLATE : Published Thesis (in Repository)
+% Output: Smith, J. 2020. Title. Unpublished doctoral thesis, 
+%         University Name, Location. http://etd.cput.ac.za/... [DD Month YYYY].
+@thesis{smith-2020-thesis-repo,
+	author   = {Smith, John},
+	year     = {2020},
+	title    = {Thesis title},
+	type     = {master's thesis},
+	school   = {Cape Peninsula University of Technology},
+	address  = {Bellville},
+	url      = {http://etd.cput.ac.za/handle/20.500.11838/3180},
+	urldate  = {2020-03-21}
 }
 
-@book{van-aswegen-2006,
-  author    = {Van Aswegen, L.},
-  year      = {2006},
-  title     = {Library research and the Harvard method of bibliographic citation: a research writing and style guide for postgraduate students},
-  location  = {Cape Town},
-  publisher = {CPUT}
+% EXAMPLE : Thesis from Repository
+@thesis{dalicuba-2020,
+	author   = {Dalicuba, M.},
+	year     = {2020},
+	title    = {Monitoring levels of ascorbic acid derivatives in Sauvignon Blanc},
+	type     = {master's thesis},
+	school   = {Cape Peninsula University of Technology},
+	address  = {Bellville},
+	url      = {http://etd.cput.ac.za/handle/20.500.11838/3180},
+	urldate  = {2020-03-21}
 }
 
-@book{van-aswegen-2007,
-  author    = {Van Aswegen, L.},
-  year      = {2007},
-  title     = {Library research and the Harvard method of bibliographic citation: a research writing and style guide for postgraduate students},
-  location  = {Cape Town},
-  publisher = {CPUT}
+% ============================================================================
+% CONFERENCE PAPERS
+% ============================================================================
+
+% TEMPLATE : Conference Paper (Published Proceedings)
+% Output: Smith, J. et al. 2020. Paper title. In Brown, A. et al. (eds.),
+%         Proceedings of Conference Name. City: Publisher, 100-110.
+@inproceedings{smith-2020-conference,
+	author    = {Smith, John and Brown, Alice},
+	year      = {2020},
+	title     = {Paper title},
+	booktitle = {Proceedings of the 58th Annual Meeting},
+	editor    = {Brown, Alice and Jones, Michael},
+	location  = {Seattle},
+	publisher = {Association},
+	pages     = {1789-1794}
 }
+
+% EXAMPLE : Conference Paper
+@inproceedings{weller-etal-2020,
+	author    = {Weller, O. and Hildebrandt, J. and Reznik, I. and others},
+	year      = {2020},
+	title     = {You don't have time to read this: document reading prediction},
+	booktitle = {Proceedings of the 58th Annual Meeting of ACL},
+	editor    = {Jurafsky, D. and Joyce, C. and Schulter, N. and Tetreault, J.},
+	location  = {Seattle},
+	publisher = {Association for Computational Linguistics},
+	pages     = {1789-1794},
+	url       = {https://aclanthology.org/volumes/2020.acl-main/},
+	urldate   = {2022-08-20}
+}
+
+@INPROCEEDINGS{hendricks-waldon,
+	author={Hendricks, Waldon},
+	booktitle={2019 Open Innovations (OI)}, 
+	title={Review of NoSQL Data Stores: Using a reactive three-tier application for software developers to achieve a high availability application design architecture}, 
+	year={2019},
+	volume={},
+	number={},
+	pages={71-77},
+	keywords={Systematics;Software;NoSQL databases;Bibliographies;Relational databases;Reliability;NoSQL;reactive;applications;databases;developers;data;three-tier applications;cloud},
+	doi={10.1109/OI.2019.8908187}}
+
+@INPROCEEDINGS{kabaso-krishanth,
+	author={Kirushanth, Sivaramalingam and Kabaso, Boniface},
+	booktitle={2019 Open Innovations (OI)}, 
+	title={Designing a Cloud-native Weigh-In-Motion}, 
+	year={2019},
+	volume={},
+	number={},
+	pages={25-29},
+	keywords={Meteorology;Prototypes;Servers;Databases;Containers;Cloud computing;Systems architecture;Cloud-native;Internet of Vehicles;Weigh-In-Motion;Vehicular Telematics;Reactive Systems;Kubernetes Cluster},
+	doi={10.1109/OI.2019.8908183}}
+
+% ============================================================================
+% NOTES ON SPECIAL CASES
+% ============================================================================
+
+% EXAMPLE: Multiple Works Same Author Same Year
+% Use suffixes a, b, c in the key name. The class will handle formatting.
+%
+% @article{smith-2020-a,
+%   author  = {Smith, John},
+%   year    = {2020},
+%   title   = {First article title},
+%   journal = {Journal A},
+%   ...
+% }
+%
+% @article{smith-2020-b,
+%   author  = {Smith, John},
+%   year    = {2020},
+%   title   = {Second article title},
+%   journal = {Journal B},
+%   ...
+% }
+%
+% Output in bibliography:
+%   Smith, J. 2020a. First article title. ...
+%   Smith, J. 2020b. Second article title. ...
+%
+% In-text: Smith (2020a) found... OR (Smith, 2020b:45)
+
+
+% EXAMPLE: Corporate Author (Organization)
+% Use double braces to protect the entire name:
+%
+% @book{organisation-2020,
+%   author    = {{Cape Peninsula University of Technology}},
+%   year      = {2020},
+%   title     = {Policy document},
+%   location  = {Cape Town},
+%   publisher = {CPUT}
+% }
+%
+% In-text: Cape Peninsula University of Technology (2020)
+
+
+% EXAMPLE: Author with Particle (van, de, von, etc.)
+% Include the particle in the surname:
+%
+% @book{van-aswegen-2006,
+%   author    = {Van Aswegen, L.},
+%   year      = {2006},
+%   title     = {Library research and the Harvard method},
+%   location  = {Cape Town},
+%   publisher = {CPUT}
+% }
+%
+% In-text: Van Aswegen (2006)
+% Alphabetical order: Filed under "V" for Van
+
+
+% ============================================================================
+% COMMON MISTAKES TO AVOID
+% ============================================================================
+
+% ❌ WRONG: Using full names instead of lastname + initials
+% @book{smith-2020-wrong,
+%   author = {John Smith and Alice Brown},  ← WRONG!
+%   ...
+% }
+
+% ✓ CORRECT: Use "Lastname, Initial(s)." format
+% @book{smith-2020-correct,
+%   author = {Smith, John and Brown, Alice},  ← CORRECT!
+%   ...
+% }
+
+
+% ❌ WRONG: Missing required fields
+% @book{smith-2020-wrong,
+%   title     = {Book title},
+%   author    = {Smith, J.},
+%   % Missing: year, location, publisher
+% }
+
+% ✓ CORRECT: Include all required fields
+% @book{smith-2020-correct,
+%   author    = {Smith, John},
+%   year      = {2020},
+%   title     = {Book title},
+%   location  = {Cape Town},
+%   publisher = {Publisher}
+% }
+
+
+% ❌ WRONG: Pages formatted with "pp."
+% @article{smith-2020-wrong,
+%   pages = {pp. 45-60},  ← WRONG!
+%   ...
+% }
+
+% ✓ CORRECT: Pages without "pp."
+% @article{smith-2020-correct,
+%   pages = {45-60},  ← CORRECT!
+%   ...
+% }
+
+
+% =====================================================================
+% END OF BIBTEX TEMPLATES
+% =====================================================================
+%
+% For more examples and detailed explanations, see:
+% - Using-cputthesis-cls-v2.8-Guide.md
+% - Harvard-Referencing-Compliance-Report.md
+% - CPUT Official Harvard Referencing Style Manual (October 2025)
+%
+% Questions? Contact CPUT Library Services or consult the guides above.
+%
+% =====================================================================

@@ -3,12 +3,15 @@
 % CPUT Thesis Template
 % LaTeX version of CPUT Thesis Template Word document
 % Compile with PDFLaTeX, XeLaTeX, or LuaLaTeX
+% Version 2.8 – fully compliant with CPUT Harvard Referencing Style (October 2025)
+% Authors: Boniface Kabaso and Waldon Henricks
+% License: CC BY 4.0
 
 \documentclass{cputthesis}
-
+\usepackage[british]{babel}
 \addbibresource{references.bib}
 
-% Thesis metadata - fill these in
+% Thesis metadata
 \thesistitle{TITLE OF THESIS/DISSERTATION}
 \authorfull{FULL FIRST NAMES \& SURNAME}
 \degreetype{Master of Technology/Doctor of Technology: (choose one)}
@@ -23,6 +26,9 @@
 
 % Title page
 \maketitle
+
+% --- Start roman page numbering (front matter) ---
+\frontmatter
 
 % Declaration
 \begin{declaration}
@@ -59,27 +65,29 @@ This is optional, and may be omitted.
 For (whomever)
 \end{dedication}
 
+% Glossary (if needed)
+\begin{cputglossary}
+	\textbf{List any terms, acronyms or abbreviations (with the appropriate caption) used here. Use single-line spacing, with a line between each item.}
+	
+	\noindent\begin{tabularx}{0.96\textwidth}{|Y|Y|}
+		\hline
+		\textbf{Terms/Acronyms/Abbreviations} & \textbf{Definition/Explanation} \\
+		\hline
+		& \\[1.2\baselineskip]
+		& \\[1.2\baselineskip]
+		& \\[1.2\baselineskip]
+		& \\[1.2\baselineskip]
+		& \\[1.2\baselineskip]
+		\hline
+	\end{tabularx}
+\end{cputglossary}
+
+% --- Automatic Table of Contents, List of Figures, List of Tables ---
 % Generated table of contents and lists. Run the compile script after adding,
 % removing, or renaming chapters, figures, tables, bibliography, or appendices.
 \cputcontents
 
-% Glossary (if needed)
-\begin{cputglossary}
-\textbf{List any terms, acronyms or abbreviations (with the appropriate caption) used here. Use single-line spacing, with a line between each item.}
-
-\noindent\begin{tabularx}{0.96\textwidth}{|Y|Y|}
-\hline
-\textbf{Terms/Acronyms/Abbreviations} & \textbf{Definition/Explanation} \\
-\hline
- & \\[1.2\baselineskip]
- & \\[1.2\baselineskip]
- & \\[1.2\baselineskip]
- & \\[1.2\baselineskip]
- & \\[1.2\baselineskip]
-\hline
-\end{tabularx}
-\end{cputglossary}
-
+% --- Main matter (arabic numbers start at 1 on first chapter) ---
 \mainmatter
 
 % Chapters
