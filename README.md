@@ -16,7 +16,7 @@ This is a LaTeX template that closely matches the official Cape Peninsula Univer
   - Chapter headings: 12-point bold, centered
   - Section headings: 11-point bold
   - Decimal numbering for sections (1.1, 1.1.1, etc.)
-  - No colored placeholder text, link boxes, or visible hyperlink markings
+  - No colored placeholder text or link boxes; Harvard in-text citations are blue clickable links to the bibliography
 - **Complete structure**: Includes all required sections:
   - Title page with CPUT logo
   - Declaration
@@ -79,7 +79,9 @@ This is a LaTeX template that closely matches the official Cape Peninsula Univer
    ```bash
    ./compile.sh pdflatex
    ```
-   The script runs `biber` automatically for the Harvard-style bibliography.
+   The script runs `biber` automatically for the Harvard-style bibliography and
+   runs LaTeX enough times to update the table of contents, list of figures, and
+   list of tables.
 
 ## Windows Setup and Recommendations
 
@@ -165,8 +167,26 @@ Each chapter should be in a separate `.tex` file for better organization. Use th
 - Tables: Use `\begin{table}...\end{table}` with `\caption` above the table
 - Follow CPUT formatting: single spacing for captions, appropriate justification
 
+### Table of Contents and Lists
+
+The sample document uses `\cputcontents`, which generates the table of contents, list of figures, and list of tables from the actual document structure. Do not edit these pages manually. The generated table of contents keeps the Word-template style: chapter headings appear as standalone lines such as `CHAPTER ONE: TITLE`, and section entries use dotted leaders with right-aligned page numbers.
+
+After adding, removing, or renaming chapters, sections, figures, tables, bibliography entries, or appendices, run the compile script again:
+
+```bash
+./compile.sh xelatex
+```
+
+On Windows:
+
+```bat
+compile.bat xelatex
+```
+
+If you compile manually in an editor, run LaTeX, then Biber, then LaTeX twice more so the generated pages and page numbers settle.
+
 ### Bibliography
-The template uses BibLaTeX with a Harvard-style author-year format. Add sources to `references.bib`, cite them in the text with `\textcite{key}` or `\parencite{key}`, and print the bibliography with `\printcputbibliography`.
+The template uses BibLaTeX with a Harvard-style author-year format. Add sources to `references.bib`, cite them in the text with `\textcite{key}` or `\parencite{key}`, and print the bibliography with `\printcputbibliography`. In-text citations are blue clickable links that jump to the matching bibliography entry in the generated PDF.
 
 Examples:
 ```latex
@@ -200,7 +220,7 @@ To use Roman numerals for front matter (Declaration, Abstract, etc.), wrap the f
 ## Notes
 
 - Compile with XeLaTeX for the closest match to the Word template because it can use Arial directly.
-- The sample document uses `\cputmanualcontents` to mirror the manual table-of-contents/list pages in the Word template. Replace it with generated `\tableofcontents`, `\listoffigures`, and `\listoftables` only if your department asks for generated lists.
+- The sample document uses `\cputcontents` for generated contents and lists. The older `\cputmanualcontents` command remains as a compatibility alias, but it now generates dynamic contents too.
 
 ## Support
 

@@ -56,7 +56,9 @@
 \RequirePackage{etoolbox}
 \RequirePackage{fancyhdr}
 \RequirePackage{graphicx}
-\RequirePackage[hidelinks,hypertexnames=false,hyperfootnotes=false]{hyperref}
+\RequirePackage{xcolor}
+\definecolor{cputcitationblue}{HTML}{0057B8}
+\RequirePackage[hypertexnames=false,hyperfootnotes=false]{hyperref}
 \RequirePackage{longtable}
 \RequirePackage{ragged2e}
 \RequirePackage{setspace}
@@ -139,6 +141,7 @@ date=year              % Show only year (not full date)
 \renewbibmacro*{url+urldate}{}
 
 % ---- In-text citations: (Author, Year:Page) ----
+\AtEveryCitekey{\color{cputcitationblue}}
 \DeclareFieldFormat{postnote}{#1}
 \DeclareFieldFormat{multipostnote}{#1}
 \renewcommand{\postnotedelim}{\addcolon}
@@ -306,10 +309,14 @@ date=year              % Show only year (not full date)
 % ---------- End of biblatex customisations ----------
 
 \hypersetup{
-	colorlinks=false,
+	colorlinks=true,
+	linkcolor=black,
+	citecolor=cputcitationblue,
+	urlcolor=cputcitationblue,
 	pdfborder={0 0 0},
 	pdfcreator={LaTeX using cputthesis.cls}
 }
+\providecommand*{\toclevel@cputchapter}{0}
 
 \setstretch{1.5}
 \setlength{\parindent}{0pt}
@@ -348,6 +355,32 @@ date=year              % Show only year (not full date)
 	\fi
 }
 
+\newcommand{\cputtocchapter}[2]{%
+  {\bfseries #1: \MakeUppercase{#2}}%
+}
+
+\def\@chapter[#1]#2{%
+  \ifnum \c@secnumdepth >\m@ne
+    \refstepcounter{chapter}%
+    \typeout{\@chapapp\space\thechapter.}%
+    \begingroup
+      \edef\cput@toclabel{\cput@chapterlabel}%
+      \addcontentsline{toc}{cputchapter}{\protect\cputtocchapter{\cput@toclabel}{#1}}%
+    \endgroup
+  \else
+    \addcontentsline{toc}{chapter}{#1}%
+  \fi
+  \chaptermark{#1}%
+  \addtocontents{lof}{\protect\addvspace{10\p@}}%
+  \addtocontents{lot}{\protect\addvspace{10\p@}}%
+  \if@twocolumn
+    \@topnewpage[\@makechapterhead{#2}]%
+  \else
+    \@makechapterhead{#2}%
+    \@afterheading
+  \fi
+}
+
 \titleformat{\chapter}[display]
 {\normalfont\bfseries\centering\fontsize{12}{14}\selectfont}
 {\cput@chapterlabel}
@@ -376,12 +409,13 @@ date=year              % Show only year (not full date)
 {}
 \titlespacing*{\subsubsection}{0pt}{6pt}{3pt}
 
-% ----- TOC formatting (wider page numbers) -----
-\contentsmargin{0pt}
-\dottedcontents{chapter}[2.5em]{\bfseries}{2.5em}{2pc}
-\dottedcontents{section}[4.5em]{}{2.8em}{2pc}
-\dottedcontents{subsection}[7.5em]{}{3.5em}{2pc}
-\dottedcontents{subsubsection}[11.0em]{}{4.5em}{2pc}
+\contentsmargin{2.6em}
+\dottedcontents{chapter}[1.5em]{\bfseries}{1.5em}{1pc}
+\dottedcontents{section}[3.8em]{}{2.3em}{1pc}
+\dottedcontents{subsection}[7.0em]{}{3.2em}{1pc}
+\dottedcontents{subsubsection}[10.0em]{}{4.1em}{1pc}
+\dottedcontents{figure}[1.5em]{}{2.8em}{1pc}
+\dottedcontents{table}[1.5em]{}{2.8em}{1pc}
 
 % ----- Captions -----
 \captionsetup{
@@ -403,8 +437,9 @@ date=year              % Show only year (not full date)
 \setlength{\bibitemsep}{\baselineskip}
 
 \defbibheading{cputbibliography}{%
-	\chapter*{BIBLIOGRAPHY/REFERENCES}%
-	\addcontentsline{toc}{chapter}{Bibliography/References}%
+  \chapter*{BIBLIOGRAPHY/REFERENCES}%
+  \phantomsection
+  \addcontentsline{toc}{chapter}{Bibliography/References}%
 }
 
 \newcommand{\printcputbibliography}{%
@@ -523,6 +558,8 @@ date=year              % Show only year (not full date)
 	\clearpage
 	\thispagestyle{plain}
 	\vspace{3.9cm}
+	\phantomsection
+	\addcontentsline{toc}{chapter}{Declaration}%
 	\cputfrontheading{DECLARATION}
 	\setstretch{1.5}
 }{%
@@ -537,6 +574,8 @@ date=year              % Show only year (not full date)
 \newenvironment{cputabstract}{%
 	\clearpage
 	\thispagestyle{plain}
+	\phantomsection
+	\addcontentsline{toc}{chapter}{Abstract}%
 	\cputfrontheading{ABSTRACT}
 	\setstretch{1.5}
 }{%
@@ -546,6 +585,8 @@ date=year              % Show only year (not full date)
 \newenvironment{acknowledgements}{%
 	\clearpage
 	\thispagestyle{plain}
+	\phantomsection
+	\addcontentsline{toc}{chapter}{Acknowledgements}%
 	\cputfrontheading{ACKNOWLEDGEMENTS}
 	\setstretch{1.5}
 }{%
@@ -555,6 +596,8 @@ date=year              % Show only year (not full date)
 \newenvironment{dedication}{%
 	\clearpage
 	\thispagestyle{plain}
+	\phantomsection
+	\addcontentsline{toc}{chapter}{Dedication}%
 	\cputfrontheading{DEDICATION}
 	\setstretch{1.5}
 }{%
@@ -564,38 +607,15 @@ date=year              % Show only year (not full date)
 \newenvironment{cputglossary}{%
 	\clearpage
 	\thispagestyle{plain}
+	\phantomsection
+	\addcontentsline{toc}{chapter}{Glossary}%
 	\cputfrontheading{GLOSSARY}
 	\setstretch{1.5}
 }{%
 	\clearpage
 }
 
-% ----- Automatic TOC, LOF, LOT -----
-\renewcommand{\tableofcontents}{%
-	\clearpage
-	\thispagestyle{plain}
-	\cputfrontheading{TABLE OF CONTENTS}
-	\@starttoc{toc}%
-	\clearpage
-}
-
-\renewcommand{\listoffigures}{%
-	\clearpage
-	\thispagestyle{plain}
-	\cputfrontheading{LIST OF FIGURES}
-	\@starttoc{lof}%
-	\clearpage
-}
-
-\renewcommand{\listoftables}{%
-	\clearpage
-	\thispagestyle{plain}
-	\cputfrontheading{LIST OF TABLES}
-	\@starttoc{lot}%
-	\clearpage
-}
-
-% ----- Manual TOC (legacy) -----
+% ----- Manual TOC helper (legacy) -----
 \newcommand{\cputmanualtocline}[3]{%
 	\noindent
 	\makebox[2.2cm][l]{#1}%
@@ -603,59 +623,69 @@ date=year              % Show only year (not full date)
 	\makebox[1.3cm][r]{#3}\par
 }
 
-\newcommand{\cputmanualcontents}{%
-	\cputfrontheading{TABLE OF CONTENTS}
-	\singlespacing
-	If you are an accomplished user of Microsoft Word, you can type your thesis using STYLES, and generate an automatic Table of Contents. If not, use the template below. This gives you an indication of section and sub-section numbering. Do the Table of Contents right at the end, otherwise you will have to update it continuously. If you are typing each chapter in a separate file, you might find it easier to collate the final thesis if you number your pages according to each chapter, e.g., in Chapter 3, your page numbers will be 3-1, 3-2, 3-3, etc. In Chapter 4 your page numbers will be 4-1, 4-2, 4-3, 4-4, etc.
-	\vspace{10pt}
-	Make sure that your headings are exactly the same as those in the text (use of sentence case and title case also). Sentence case is less confusing, easier to use and looks more modern and professional. Align page numbers on the right. Use single line-spacing.
-	\vspace{16pt}
-	\cputmanualtocline{}{Declaration}{ii}
-	\cputmanualtocline{}{Abstract}{iii}
-	\cputmanualtocline{}{Acknowledgements}{iv}
-	\cputmanualtocline{}{Dedication}{v}
-	\cputmanualtocline{}{Glossary}{viii}
-	\clearpage
-	{\bfseries CHAPTER ONE: TYPE THE TITLE HERE}\par
-	\vspace{8pt}
-	\cputmanualtocline{1.1}{Introduction}{1}
-	\cputmanualtocline{1.1.1}{Heading: use sentence case, as in this example}{2}
-	\cputmanualtocline{1.1.2}{Heading}{3}
-	\cputmanualtocline{1.1.2.1}{Heading}{5}
-	\cputmanualtocline{1.1.2.2}{Heading}{6}
-	\vspace{18pt}
-	{\bfseries CHAPTER TWO: TYPE THE TITLE HERE}\par
-	\vspace{8pt}
-	\cputmanualtocline{2.1}{Heading}{7}
-	\cputmanualtocline{2.2}{Heading}{8}
-	\cputmanualtocline{2.2.1}{Heading}{11}
-	\cputmanualtocline{2.2.2}{Heading}{15}
-	\vspace{18pt}
-	Copy and paste the above for the rest of the chapters, changing the chapter and section numbers accordingly.
-	\vspace{18pt}
-	\cputmanualtocline{}{\bfseries BIBLIOGRAPHY/REFERENCES choose one}{150}
-	\clearpage
-	\vspace{18pt}
-	{\bfseries LIST OF FIGURES (these are numbered according to the chapter in which they appear)}\par
-	\vspace{8pt}
-	\cputmanualtocline{}{Figure 4.1: Caption}{75}
-	\cputmanualtocline{}{Figure 4.2: Caption}{82}
-	\cputmanualtocline{}{Figure 5.1: Caption}{101}
-	\vspace{18pt}
-	{\bfseries LIST OF TABLES (these are numbered according to the chapter in which they appear)}\par
-	\vspace{8pt}
-	\cputmanualtocline{}{Table 4.1: Caption}{72}
-	\cputmanualtocline{}{Table 4.2: Caption}{79}
-	\cputmanualtocline{}{Table 5.1: Caption}{121}
-	\vspace{18pt}
-	\cputmanualtocline{}{\bfseries APPENDIX/APPENDICES}{160}
-	(Choose one. If you have only one appendix, do not use Appendix A. List it as simply as Appendix.)
-	\vspace{12pt}
-	\cputmanualtocline{}{Appendix A: Caption}{161}
-	\cputmanualtocline{}{Appendix B: Caption}{163}
-	Add C, D, E, etc.
-	\clearpage
+\newcommand{\cput@tocline}[3]{%
+  \ifnum \c@tocdepth > #1\relax
+    \begingroup
+      \parindent\z@
+      \leftskip\z@
+      \rightskip2.6em
+      \parfillskip-2.6em
+      \def\numberline##1{##1\hspace{0.8em}}%
+      \leavevmode #2\nobreak
+      \leaders\hbox to .6em{\hss.\hss}\hfill
+      \nobreak\makebox[2.6em][r]{#3}\par
+    \endgroup
+  \fi
 }
+
+\newcommand*\l@cputchapter[2]{%
+  \ifnum \c@tocdepth >\m@ne
+    \addvspace{12pt}%
+    \noindent #1\par
+  \fi
+}
+
+\renewcommand*\l@chapter[2]{\cput@tocline{-1}{\bfseries #1}{#2}}
+\renewcommand*\l@section[2]{\cput@tocline{0}{#1}{#2}}
+\renewcommand*\l@subsection[2]{\cput@tocline{1}{#1}{#2}}
+\renewcommand*\l@subsubsection[2]{\cput@tocline{2}{#1}{#2}}
+\renewcommand*\l@figure[2]{\cput@tocline{0}{#1}{#2}}
+\let\l@table\l@figure
+
+\renewcommand{\tableofcontents}{%
+  \clearpage
+  \thispagestyle{plain}
+  \cputfrontheading{TABLE OF CONTENTS}
+  \singlespacing
+  \@starttoc{toc}%
+  \clearpage
+}
+
+\renewcommand{\listoffigures}{%
+  \clearpage
+  \thispagestyle{plain}
+  \cputfrontheading{LIST OF FIGURES}
+  \singlespacing
+  \@starttoc{lof}%
+  \clearpage
+}
+
+\renewcommand{\listoftables}{%
+  \clearpage
+  \thispagestyle{plain}
+  \cputfrontheading{LIST OF TABLES}
+  \singlespacing
+  \@starttoc{lot}%
+  \clearpage
+}
+
+\newcommand{\cputcontents}{%
+  \tableofcontents
+  \listoffigures
+  \listoftables
+}
+
+\newcommand{\cputmanualcontents}{\cputcontents}
 
 % ----- Appendix -----
 \renewcommand{\appendix}{%
