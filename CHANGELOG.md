@@ -6,10 +6,16 @@ The format follows Keep a Changelog-style sections, and this project uses Semant
 
 ## [Unreleased]
 
+## [1.0.2] - 2026-05-17
+
 ### Changed
 
 - Replaced the default static table of contents/list pages with generated contents, list of figures, and list of tables while preserving the Word-template chapter-heading layout.
 - Added generated table-of-contents entries for front-matter pages such as Declaration, Abstract, Acknowledgements, Dedication, and Glossary.
+
+### Fixed
+
+- Made Harvard in-text citations blue clickable PDF links that jump to the matching bibliography entry.
 
 ## [1.0.0] - 2026-05-10
 
