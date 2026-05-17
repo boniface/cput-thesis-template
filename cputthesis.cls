@@ -444,10 +444,12 @@ date=year              % Show only year (not full date)
 
 \newcommand{\printcputbibliography}{%
 	\clearpage
+	\begingroup
 	\singlespacing
 	\RaggedRight
 	\printbibliography[heading=cputbibliography]%
 	\clearpage
+	\endgroup
 }
 
 % ---------- Metadata ----------
@@ -654,29 +656,35 @@ date=year              % Show only year (not full date)
 
 \renewcommand{\tableofcontents}{%
   \clearpage
+  \begingroup
   \thispagestyle{plain}
   \cputfrontheading{TABLE OF CONTENTS}
   \singlespacing
   \@starttoc{toc}%
   \clearpage
+  \endgroup
 }
 
 \renewcommand{\listoffigures}{%
   \clearpage
+  \begingroup
   \thispagestyle{plain}
   \cputfrontheading{LIST OF FIGURES}
   \singlespacing
   \@starttoc{lof}%
   \clearpage
+  \endgroup
 }
 
 \renewcommand{\listoftables}{%
   \clearpage
+  \begingroup
   \thispagestyle{plain}
   \cputfrontheading{LIST OF TABLES}
   \singlespacing
   \@starttoc{lot}%
   \clearpage
+  \endgroup
 }
 
 \newcommand{\cputcontents}{%

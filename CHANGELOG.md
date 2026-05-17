@@ -16,6 +16,7 @@ The format follows Keep a Changelog-style sections, and this project uses Semant
 ### Fixed
 
 - Made Harvard in-text citations blue clickable PDF links that jump to the matching bibliography entry.
+- Kept 1.5-line spacing active for thesis body text after generated contents/list pages and after the bibliography.
 
 ## [1.0.0] - 2026-05-10
 
