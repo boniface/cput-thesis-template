@@ -4,6 +4,13 @@ All notable changes to this template will be documented in this file.
 
 The format follows Keep a Changelog-style sections, and this project uses Semantic Versioning.
 
+## [Unreleased]
+
+### Changed
+
+- Replaced the default static table of contents/list pages with generated contents, list of figures, and list of tables while preserving the Word-template chapter-heading layout.
+- Added generated table-of-contents entries for front-matter pages such as Declaration, Abstract, Acknowledgements, Dedication, and Glossary.
+
 ## [1.0.0] - 2026-05-10
 
 ### Added
