@@ -16,7 +16,7 @@ This is a LaTeX template that closely matches the official Cape Peninsula Univer
   - Chapter headings: 12-point bold, centered
   - Section headings: 11-point bold
   - Decimal numbering for sections (1.1, 1.1.1, etc.)
-  - No colored placeholder text, link boxes, or visible hyperlink markings
+  - No colored placeholder text or link boxes; Harvard in-text citations are blue clickable links to the bibliography
 - **Complete structure**: Includes all required sections:
   - Title page with CPUT logo
   - Declaration
@@ -186,7 +186,7 @@ compile.bat xelatex
 If you compile manually in an editor, run LaTeX, then Biber, then LaTeX twice more so the generated pages and page numbers settle.
 
 ### Bibliography
-The template uses BibLaTeX with a Harvard-style author-year format. Add sources to `references.bib`, cite them in the text with `\textcite{key}` or `\parencite{key}`, and print the bibliography with `\printcputbibliography`.
+The template uses BibLaTeX with a Harvard-style author-year format. Add sources to `references.bib`, cite them in the text with `\textcite{key}` or `\parencite{key}`, and print the bibliography with `\printcputbibliography`. In-text citations are blue clickable links that jump to the matching bibliography entry in the generated PDF.
 
 Examples:
 ```latex

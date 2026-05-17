@@ -56,7 +56,9 @@
 \RequirePackage{etoolbox}
 \RequirePackage{fancyhdr}
 \RequirePackage{graphicx}
-\RequirePackage[hidelinks,hypertexnames=false,hyperfootnotes=false]{hyperref}
+\RequirePackage{xcolor}
+\definecolor{cputcitationblue}{HTML}{0057B8}
+\RequirePackage[hypertexnames=false,hyperfootnotes=false]{hyperref}
 \RequirePackage{longtable}
 \RequirePackage{ragged2e}
 \RequirePackage{setspace}
@@ -139,6 +141,7 @@ date=year              % Show only year (not full date)
 \renewbibmacro*{url+urldate}{}
 
 % ---- In-text citations: (Author, Year:Page) ----
+\AtEveryCitekey{\color{cputcitationblue}}
 \DeclareFieldFormat{postnote}{#1}
 \DeclareFieldFormat{multipostnote}{#1}
 \renewcommand{\postnotedelim}{\addcolon}
@@ -306,7 +309,10 @@ date=year              % Show only year (not full date)
 % ---------- End of biblatex customisations ----------
 
 \hypersetup{
-	colorlinks=false,
+	colorlinks=true,
+	linkcolor=black,
+	citecolor=cputcitationblue,
+	urlcolor=cputcitationblue,
 	pdfborder={0 0 0},
 	pdfcreator={LaTeX using cputthesis.cls}
 }
